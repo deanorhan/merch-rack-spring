@@ -36,8 +36,7 @@ public class RackSpace extends Auditable {
   @JoinColumn(name = "parent", nullable = false)
   private RackSpace parent;
 
-  @NotBlank
-  @Column(nullable = false)
+  @NotBlank @Column(nullable = false)
   private String name;
 
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "parent", fetch = FetchType.LAZY)

@@ -32,8 +32,7 @@ public class Image extends Auditable {
   @JoinColumn(name = "merch", nullable = false)
   private Merch merch;
 
-  @NotBlank
-  @Column(nullable = false)
+  @NotBlank @Column(nullable = false)
   private String uri;
 
   private String title;

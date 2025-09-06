@@ -33,8 +33,7 @@ public class MerchResource {
   private MerchStatus status;
 
   @Schema(description = "Title of the piece of merch")
-  @NotBlank
-  private String title;
+  @NotBlank private String title;
 
   @Schema(description = "Price of the piece of merch")
   @NotNull @Positive private BigDecimal price;

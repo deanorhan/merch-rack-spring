@@ -64,21 +64,14 @@ public class MerchService {
 
   private Merch getMerchById(UUID merchId) {
     var merch = repo.findById(merchId);
-    if (merch.isEmpty()) {
-      throw new MerchNotFoundException();
-    }
 
-    return merch.get();
+    return merch.orElseThrow(() -> new MerchNotFoundException());
   }
 
   private Merch getByMerchIdAndVendor(UUID merchId, UUID vendor) {
     var merch = repo.findByIdAndVendor(merchId, vendor);
 
-    if (merch.isEmpty()) {
-      throw new MerchNotFoundException();
-    }
-
-    return merch.get();
+    return merch.orElseThrow(() -> new MerchNotFoundException());
   }
 
   public MerchResource saveMerch(MerchResource merchRequest) {

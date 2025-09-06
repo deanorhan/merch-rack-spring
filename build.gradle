@@ -6,10 +6,10 @@ plugins {
   id 'org.liquibase.gradle' version '2.2.0'
   id 'io.freefair.lombok' version '8.1.0'
   id 'org.owasp.dependencycheck' version '8.3.1'
-  id 'com.github.andygoossens.gradle-modernizer-plugin' version '1.8.0'
+  id 'com.github.andygoossens.gradle-modernizer-plugin' version '1.11.0'
   id 'pmd'
-  id 'com.github.ben-manes.versions' version '0.47.0'
-  id 'com.diffplug.spotless' version '6.19.0'
+  id 'com.github.ben-manes.versions' version '0.52.0'
+  id 'com.diffplug.spotless' version '7.2.1'
   // Fucking buildship
   // id 'eclipse'
 
@@ -17,9 +17,11 @@ plugins {
   id 'org.springdoc.openapi-gradle-plugin' version '1.6.0'
 }
 
-group = 'org.daemio'
-version = '0.1.0'
-sourceCompatibility = '17'
+java {
+  group = 'org.daemio'
+  version = '0.1.0'
+  sourceCompatibility = JavaVersion.VERSION_17
+}
 
 sourceSets {
   integrationTest {
@@ -53,7 +55,8 @@ dependencies {
 
   implementation 'io.opentracing.contrib:opentracing-spring-cloud-starter:0.5.9'
 
-  implementation 'ch.qos.logback:logback-classic:1.4.8'
+  implementation 'ch.qos.logback:logback-classic:1.5.18'
+  implementation 'ch.qos.logback:logback-core:1.5.18'
   implementation 'ch.qos.logback.contrib:logback-json-classic:0.1.5'
   implementation 'ch.qos.logback.contrib:logback-jackson:0.1.5'
   implementation 'net.logstash.logback:logstash-logback-encoder:7.4'
@@ -83,8 +86,8 @@ dependencies {
 
   implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0'
 
-  testImplementation 'org.junit.jupiter:junit-jupiter-api:5.11.0-M2'
-  testImplementation 'org.junit.platform:junit-platform-suite:1.10.0-M1'
+  testImplementation 'org.junit.jupiter:junit-jupiter-api'
+  testImplementation 'org.junit.platform:junit-platform-suite'
 
   testImplementation 'org.springframework.boot:spring-boot-starter-test'
   testImplementation 'org.springframework.security:spring-security-test'
@@ -172,10 +175,10 @@ spotless {
   java {
     removeUnusedImports()
 
-    googleJavaFormat('1.17.0')
+    googleJavaFormat('1.28.0')
 
     importOrder('java|javax|jakarta', '', 'org.daemio', '\\#')
-    indentWithSpaces(2)
+    leadingTabsToSpaces(2)
     trimTrailingWhitespace()
 
     formatAnnotations()
@@ -185,7 +188,7 @@ spotless {
     target '*.gradle', '*.md', '.gitignore'
 
     trimTrailingWhitespace()
-    indentWithSpaces(2)
+    leadingTabsToSpaces(2)
   }
 }
 

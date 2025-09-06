@@ -43,8 +43,7 @@ public class Merch extends Auditable {
 
   @NotNull private UUID vendor;
 
-  @NotBlank
-  @Column(nullable = false)
+  @NotBlank @Column(nullable = false)
   private String title;
 
   private String description;

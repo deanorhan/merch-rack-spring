@@ -15,12 +15,12 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import org.daemio.merch.config.HandlerConfig;
@@ -50,7 +50,7 @@ public class MerchControllerTest {
   @Autowired private MockMvc mvc;
   @Autowired private ObjectMapper mapper;
 
-  @MockBean private MerchService merchService;
+  @MockitoBean private MerchService merchService;
 
   @DisplayName(
       "when calling for a list of merch then the service should return "
